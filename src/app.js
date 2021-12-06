@@ -1,6 +1,6 @@
-// const inputDate = document.querySelector("#date-input");
+const inputDate = document.querySelector("#date-input");
 const showBtn = document.querySelector("#btn");
-const output = document.querySelector("#show-output");
+const show = document.querySelector("#show-output");
 
 // function 1
 //that takes a string and reverses it
@@ -14,20 +14,18 @@ function reverseStr(dateIntoStr) {
 // function 3
 // that converts input date into DD/MM/YY format
 function dateMonthYear() {
-    const dat = parseInt(document.querySelector("#date-input"));
-    const date = parseInt(dat);
-    const day = (date / 1000000).toFixed(0);
-    const month = (date / 10000).toFixed(0);
-    const year = (date / 1).toFixed(0);
-
-    const ddmmyy = [day, month, year];
-    const dd = day.slice(0);
-    const mm = month.slice(2);
-    const yy = year.slice(6);
-
-    const newddmmyy = dd + mm + yy;
+    const date = inputDate.value;
+    const x1 = new Date(date);
+    const day = x1.getDate().toString();
+    const month = (x1.getMonth() + 1).toString();
+    const year = x1.getFullYear().toString();
+    const newddmmyy = day + month + year;
     return newddmmyy;
 }
 
-const x = dateMonthYear();
-showBtn.addEventListener('click', console.log(x));
+function output() {
+    const x = dateMonthYear();
+    return console.log(x);
+}
+
+showBtn.addEventListener('click', output);
